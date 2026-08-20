@@ -1,819 +1,190 @@
 
-<!doctype html>
+
+
+
+<!DOCTYPE html>
 <html lang="en">
-
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>jack</title>
+ <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
 
-  <title>Ballebaj — Message Landing</title>
 
-  <script>
-    window.SITE_CONFIG = {
-      brandName: "Ballebaj",
-      companyName: "Ballebaj",
-      pageTitle: "Ballebaj — Message Landing",
-      phone: "91 8005759540",
-      message: "Hello, I Want 🆔",
-    };
-
-    document.title = window.SITE_CONFIG.pageTitle;
-  </script>
-
-  <link rel="preconnect" href="https://web.whatsapp.com">
-
-  <!-- External CSS -->
 <style>
-    /* ---------- Base ---------- */
-:root{
-  --accent: #25d366;
-  --muted: #7b8892;
-  --bg-page: linear-gradient(180deg,#fbfdfc,#f6fbf9);
-  --card-bg: #fff;
-  --dark-bg: #081219;
-  --maxw: 1200px;
-  --radius-md: 16px;
-  --font: Inter, system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family: 'Segoe UI', sans-serif;
 }
 
-* {
-  box-sizing: border-box;
+body{
+    min-height:100vh;
+    background-color: #fff;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    padding:20px;
+    font-family: "Poppins", sans-serif;
 }
 
-html, body {
-  height: 100%;
-  margin: 0;
-  font-family: var(--font);
-  color: #03111a;
-  background: var(--bg-page);
-  -webkit-font-smoothing: antialiased;
+.card{
+    width:100%;
+    max-width:450px;
+    background:rgba(20,20,20,0.95);
+    border-radius:20px;
+    padding:32px 24px;
+    text-align:center;
+    box-shadow:0 0 35px rgba(0,255,255,0.15);
+    position:relative;
 }
 
-a {
-  color: inherit;
-  text-decoration: none;
+/* Badge */
+.badge{
+    position:absolute;
+    top:-14px;
+    left:50%;
+    transform:translateX(-50%);
+    background:#00ffff;
+    color:#000;
+    padding:6px 18px;
+    border-radius:30px;
+    font-size:13px;
+    font-weight:600;
 }
 
-/* ---------- OFFER BANNER ---------- */
-.offer-banner {
-  display: flex;
-  align-items: center;
-  gap: 5px;
-  padding: 6px 12px;
-  border-radius: 999px;
-  background: #ecfdf5;
-  color: #065f46;
-  font-size: 14px;
-  font-weight: 600;
-  margin-bottom: 10px;
+.button {
+	margin: 30px 0;
 }
 
-.offer-pill {
-  background: #22c55e;
-  color: #ecfdf5;
-  padding: 2px 10px;
-  border-radius: 999px;
-  font-size: 12px;
-  text-transform: uppercase;
-  letter-spacing: 0.04em;
+
+
+.card h1{
+    font-size:24px;
+    color:#ffffff;
+    margin-bottom:18px;
+    font-family: "Poppins", sans-serif;
 }
 
-.offer-timer {
-  font-variant-numeric: tabular-nums;
+.card h1 span{
+    color:#00ffff;
 }
 
-/* ---------- RIGHT-SIDE TOAST ACTIVITY (RESPONSIVE) ---------- */
-.chat-activity {
-  position: fixed;
-  right: 70px;
-  bottom: 70px;
-  padding: 10px 12px;
-  border-radius: 12px;
-  background: rgba(15, 23, 42, 0.94);
-  color: #e5e7eb;
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  box-shadow: 0 10px 24px rgba(15, 23, 42, 0.5);
-  font-size: 13px;
-  max-width: 330px;
-  z-index: 40;
-  border: 1px solid rgba(148, 163, 184, 0.3);
 
-  /* hidden by default */
-  opacity: 0;
-  transform: translate3d(16px, 8px, 0);
-  pointer-events: none;
-  transition: opacity 0.45s ease, transform 0.45s ease;
+.button a {
+    font-size: 20px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 4px;
+    background-color: #1c93e3;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+    padding: 15px 60px;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 8px;
+    display: inline-block;
+    animation: zoomInOut 2s infinite ease-in-out;
 }
 
-/* visible state (toast showing) */
-.chat-activity.is-visible {
-  opacity: 1;
-  transform: translate3d(0, 0, 0);
-  pointer-events: auto;
+        .button a:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 20px rgba(33, 154, 212, 0.8);
+        }
+
+        @keyframes zoomInOut {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+        }
+
+
+.card h3 {
+	color: #fff;
 }
 
-.chat-activity-dot {
-  width: 8px;
-  height: 8px;
-  margin-right: 8px;
-  border-radius: 999px;
-  background: #22c55e;
-  box-shadow: 0 0 8px rgba(34, 197, 94, 0.8);
-  flex-shrink: 0;
+/* Text */
+.card p{
+    font-size:14px;
+    color:#cfcfcf;
+    line-height:1.6;
+    margin-bottom:10px;
+    font-family: "Poppins", sans-serif;
 }
 
-.chat-activity-text {
-  display: flex;
-  flex-direction: column;
-  line-height: 1.3;
+.exp{
+    margin-top:14px;
+    padding-top:12px;
+    border-top:1px solid rgba(255,255,255,0.1);
+    font-size:15px;
+    font-weight:600;
+    color:#ffffff;
 }
 
-.chat-activity-main {
-  font-weight: 600;
-  font-size: 12.5px;
+.card img {
+	width: 90px;
+	border-radius: 50px;
 }
 
-.chat-activity-sub {
-  font-size: 11px;
-  color: #9ca3af;
+/* Desktop */
+@media(min-width:768px){
+    .card{
+        padding:42px 36px;
+    }
+    .card h1{
+        font-size:28px;
+    }
+    .card p{
+        font-size:15px;
+    }
 }
 
-.market-credit {
-  margin-top: 14px;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: 6px;
-  padding-top: 10px;
-  border-top: 1px solid rgba(148, 163, 184, 0.16);
-  font-size: 12px;
-  color: #94a3b8;
+@media only screen and (max-width: 500px) {
+ 
+.button a {
+	font-size: 16px;
+	font-weight: 700;
+	text-transform: uppercase;
+	letter-spacing: 4px;
+   
+	box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+	padding: 15px 38px;
 }
-
-.market-credit span {
-  font-size: 9px;
-  font-weight: 700;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: #cbd5e1;
-}
-
-.market-credit a {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  color: #ffffff;
-  text-decoration: none;
-  font-weight: 700;
-  background: linear-gradient(180deg, rgba(255,255,255,0.08), rgba(255,255,255,0.03));
-  padding: 6px 10px;
-  border-radius: 999px;
-  border: 1px solid rgba(148, 163, 184, 0.22);
-  transition: all 0.2s ease;
-  line-height: 1.2;
-  box-shadow: inset 0 1px 0 rgba(255,255,255,0.08);
-}
-
-.market-credit a:hover,
-.market-credit a:focus-visible {
-  background: linear-gradient(180deg, rgba(255,255,255,0.12), rgba(255,255,255,0.06));
-  border-color: rgba(148, 163, 184, 0.38);
-}
-
-/* ---------- MOBILE (phones & small tablets) ---------- */
-@media (max-width: 640px) {
-  .chat-activity {
-    right: auto;
-    left: 50%;
-    bottom: 30%;
-    width: calc(100% - 32px);
-    max-width: 320px;
-    padding: 10px 12px;
-    font-size: 12.5px;
-    transform: translate3d(50%, 8px, 0);
-  }
-
-  .chat-activity.is-visible {
-    transform: translate3d(-50%, 0, 0);
-  }
-
-  .chat-activity-sub {
-    font-size: 11px;
-  }
-}
-
-/* ---------- VERY SMALL HEIGHT (landscape phones etc.) ---------- */
-@media (max-height: 480px) {
-  .chat-activity {
-    bottom: 16px;
-    padding: 9px 12px;
-    font-size: 12px;
-  }
-}
-
-/* ---------- NAVBAR ---------- */
-.nav {
-  width: 100%;
-  background: #ffffff;
-  border-bottom: 1px solid #f2f2f2;
-  padding: 12px 18px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-
-.nav-inner {
-  max-width: var(--maxw);
-  margin: 0 auto;
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  width: 100%;
-    display: flex;
-  justify-content: space-between;
-}
-
-.nav-left {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-}
-
-.nav-menu {
-  display: flex;
-  gap: 18px;
-  margin-left: 36px;
-  flex: 1;
-  justify-content: center;
-}
-
-.nav-menu a {
-  font-size: 15px;
-  color: #111;
-  font-weight: 500;
-}
-
-.download-btn {
-  background: var(--accent);
-  color: #062014;
-  padding: 10px 16px;
-  border-radius: 999px;
-  font-weight: 700;
-  border: none;
-  cursor: pointer;
-  display: flex;
-  justify-content: space-between;
-}
-
-@media (max-width: 880px) {
-  .nav-menu {
-    display: none;
-  }
-}
-
-/* ---------- HERO / MAIN ---------- */
-.hero {
-  max-width: var(--maxw);
-  margin: 28px auto 36px;
-  padding: 18px 20px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 12px;
-}
-
-.icon{
-  width: 45px;
-  height: 45px;
-}
-
-.profile-img {
-  width: 120px;
-  height: 120px;
-  border-radius: 50%;
-  object-fit: contain;
-  background-color: #fff;
-  box-shadow: 0 6px 18px rgba(0,0,0,0.12);
-}
-
-.phone-line {
-  color: var(--muted);
-  font-size: 18px;
-  text-align: center;
-}
-
-.sub-desc {
-  text-align: center;
-  max-width: 640px;
-  color: #626b73;
-  font-size: 15px;
-  margin-top: 6px;
-}
-
-/* Message Box */
-.msg-panel {
-  width: 720px;
-  max-width: 94%;
-  background: #faf9f8;
-  border-radius: 14px;
-  padding: 18px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 12px;
-  box-shadow: 0 10px 30px rgba(2,6,23,0.04);
-  border: 1px solid #f0efee;
-}
-
-.controls {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  align-items: center;
-  width: 100%;
-  margin-top: 6px;
-}
-
-.btn {
-  min-width: 240px;
-  padding: 12px 22px;
-  border-radius: 999px;
-  font-weight: 700;
-  font-size: 15px;
-  cursor: pointer;
-  border: 2px solid rgba(0,0,0,0.06);
-}
-
-.btn-primary {
-  background: var(--accent);
-  color: #042014;
-  border: none;
-  box-shadow: 0 8px 24px rgba(34,197,94,0.14);
-}
-
-.btn-secondary {
-  background: transparent;
-  color: #07121a;
-  border: 2px solid rgba(11,18,32,0.06);
-}
-
-.hint {
-  display: flex;
-  gap: 10px;
-  align-items: center;
-  color: var(--muted);
-  font-size: 14px;
-  margin-top: 6px;
-}
-
-.hint .mini {
-  width: 34px;
-  height: 34px;
-  border-radius: 8px;
-  background: linear-gradient(180deg,#ecfdf5,#dcfce7);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: var(--accent);
-  font-weight: 800;
-}
-
-@media (max-width: 540px) {
-  .msg-panel { padding: 12px; }
-  .btn { min-width: 180px; }
-  .profile-img { width: 96px; height: 96px; }
-}
-
-/* ---------- FOOTER ---------- */
-.footer {
-  background: var(--dark-bg);
-  color: #dbe7e0;
-  padding: 40px 16px;
-  margin-top: 36px;
-}
-
-.footer .wrap {
-  max-width: var(--maxw);
-  margin: 0 auto;
-  display: grid;
-  grid-template-columns: repeat(6, 1fr);
-  gap: 20px;
-  align-items: start;
-}
-
-.f-left {
-  grid-column: span 2;
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-  width: 60%;
-}
-
-.f-download {
-  display: inline-flex;
-  align-items: center;
-  gap: 10px;
-  padding: 10px 18px;
-  border-radius: 999px;
-  background: #22c55e;
-  color: #081411;
-  font-weight: 700;
-  text-decoration: none;
-  width: fit-content;
-}
-
-.f-col {
-  min-width: 140px;
-}
-
-.f-col .title {
-  color: #94a3a1;
-  font-size: 13px;
-  margin-bottom: 8px;
-}
-
-.f-col a {
-  display: block;
-  color: #dbe7e0;
-  text-decoration: none;
-  margin: 6px 0;
-  font-size: 15px;
-}
-
-.f-col a:hover {
-  text-decoration: underline;
-  color: white;
-}
-
-.divider {
-  height: 1px;
-  background: rgba(255,255,255,0.03);
-  margin: 20px 0;
-}
-
-.f-bottom {
-  max-width: var(--maxw);
-  margin: 0 auto;
-  padding: 0 16px;
-  display: flex;
-  justify-content: space-between;
-  flex-wrap: wrap;
-  gap: 12px;
-}
-
-.f-lefts {
-  display: flex;
-  gap: 18px;
-  align-items: center;
-  color: #94a3a1;
-  font-size: 13px;
-  flex-wrap: wrap;
-}
-
-.small-links a {
-  color: #94a3a1;
-  margin-right: 10px;
-  font-size: 13px;
-}
-
-.social {
-  display: flex;
-  gap: 10px;
-  align-items: center;
-}
-
-.social .icon {
-  width: 38px;
-  height: 38px;
-  border-radius: 999px;
-  border: 1px solid rgba(255,255,255,0.06);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: #dbe7e0;
-}
-
-.lang {
-  padding: 8px 14px;
-  border-radius: 999px;
-  border: 1px solid rgba(255,255,255,0.06);
-  background: transparent;
-  color: #dbe7e0;
-  font-weight: 600;
-  cursor: pointer;
-}
-
-/* Responsive Footer */
-@media (max-width: 1000px) {
-  .footer .wrap {
-    grid-template-columns: repeat(2, 1fr);
-  }
-  .f-left {
-    grid-column: 1 / -1;
-  }
-}
-
-@media (max-width: 600px) {
-  .footer .wrap {
-    grid-template-columns: 1fr;
-  }
 }
 </style>
-
 </head>
 
 <body>
 
-  <!-- NAV -->
-  <nav class="nav" role="navigation" aria-label="Main">
-    <div class="nav-inner">
-      <div class="nav-left">
-        <a href="https://wa.me/918005759540?text=Hello%2C%20I%20Want">
-          <img src="https://divyam.adverraa.in/wp-content/uploads/2026/08/green.png" alt="whatsapp">
-        </a>
-      </div>
+<div class="card">
+  
 
-      <div class="nav-menu">
-        <a href="#">Features ▾</a>
-        <a href="#">Privacy</a>
-        <a href="#">Help Center</a>
-        <a href="#">Blog</a>
-        <a href="#">For Business</a>
-        <a href="#">Apps</a>
-      </div>
+     <h1> BANKNIFTY EXPERT </h1>
 
-    </div>
-  </nav>
+     <h3>SEBI REGISTERED - <span>INH000018221</span></h3>
+   
 
-  <!-- HERO -->
-  <main class="hero" role="main">
-
-    <!-- Offer + Countdown 
-    <div class="offer-banner">
-      <span class="offer-pill">Get 50% off</span>
-      <span class="offer-timer" id="offerTimer">02:00</span>
-    </div>
-    -->
-
-    <img src="https://divyam.adverraa.in/wp-content/uploads/2026/08/logo.jpeg" class="profile-img" alt="Profile">
-
-    <div class="phone-line">
-      Chat on WhatsApp with <strong id="phoneLabel"></strong>
-    </div>
-
-    <div class="msg-panel">
-      <div class="controls">
-        <div class="sub-desc">Hello, I Want 🆔</div>
-        <a href="https://wa.me/918005759540?text=Hello%2C%20I%20Want" class="btn btn-primary">Continue with WhatsApp</a>
-      </div>
-    </div>
-  </main>
-
-  <!-- Right-side activity widget -->
-  <div id="chatActivity" class="chat-activity" aria-live="polite"></div>
-
-  <!-- FOOTER -->
-  <footer class="footer">
-    <div class="wrap">
-      <div class="f-left">
-        <img src="https://divyam.adverraa.in/wp-content/uploads/2026/08/white.png" alt="logo">
-      </div>
-
-      <div class="f-col">
-        <div class="title">What we do</div>
-        <a href="#">Features</a>
-        <a href="#">Blog</a>
-        <a href="#">Security</a>
-        <a href="#">For Business</a>
-        <div class="market-credit">
-
+    <div class="button">
+            <a href="https://t.me/+l1b8HQGfzMI0YjJl" onclick="fbq('track', 'Contact');">
+               Join Telegram
+            </a>
         </div>
-      </div>
 
-      <div class="f-col">
-        <div class="title">Who we are</div>
-        <a href="#">About us</a>
-        <a href="#">Careers</a>
-        <a href="#">Brand Center</a>
-        <a href="#">Privacy</a>
-      </div>
+        
+  
+   <p>📈 Nifty, BankNifty trend Beginners & Retail !nvestors</p>
+   <p>🔔 90% accurancy in indian market</p>
+   <p>📈 Get Nifty,Banknifty Level Update With Proper Analysis </p>
+   <p>👇 For More Updates CLICK ON BELOW BUTTON</p>
+      <h3>join our Telegram channel </h3>
 
-      <div class="f-col">
-        <div class="title">Use <span id="brandNameFooter"></span></div>
-        <a href="#">Android</a>
-        <a href="#">iPhone</a>
-        <a href="#">Mac/PC</a>
-        <a href="#">Web</a>
-      </div>
-
-      <div class="f-col">
-        <div class="title">Need help?</div>
-        <a href="#">Contact Us</a>
-        <a href="#">Help Center</a>
-        <a href="#">Apps</a>
-        <a href="#">Security Advisories</a>
-      </div>
-    </div>
-
-    <div class="divider"></div>
-
-    <div class="f-bottom">
-      <div class="f-lefts">
-        © <span id="year"></span> <span id="companyName"></span>
-        <div class="small-links">
-          <a href="#">Terms & Privacy</a>
-          <a href="#">Sitemap</a>
+    <div class="button">
+            <a href="https://t.me/+l1b8HQGfzMI0YjJl" onclick="fbq('track', 'Contact');">
+                 Join Telegram
+            </a>
         </div>
-      </div>
-
-      <div class="social">
-        <a class="icon">X</a>
-        <a class="icon">▶</a>
-        <a class="icon">◎</a>
-        <a class="icon">f</a>
-      </div>
-
-      <button class="lang" id="langBtn">English ▾</button>
-    </div>
-  </footer>
-
-  <script>
-
-    // ---------- CONFIG & URL DATA ----------
-    const SITE_CONFIG = window.SITE_CONFIG;
-
-    const phoneLabel = document.getElementById("phoneLabel");
-    const companyName = document.getElementById("companyName");
-    const brandNameFooter = document.getElementById("brandNameFooter");
-
-    function formatPhoneDisplay(phone) {
-      if (phone.startsWith("91") && phone.length === 12) {
-        return `+91 ${phone.slice(2)}`;
-      }
-      
-      if (phone.startsWith("212") && phone.length === 12) {
-        // Morocco: +212 6XX-XXXXXX
-        return `+212 ${phone.slice(3, 6)}-${phone.slice(6)}`;
-      }
-
-      return `+${phone}`;
-    }
-
-    // Mobile detection
-    const isMobile = /Android|iPhone|iPad|iPod|Mobi/i.test(navigator.userAgent);
-
-    // Insert into UI
-    phoneLabel.textContent = formatPhoneDisplay(SITE_CONFIG.phone);
-    companyName.textContent = SITE_CONFIG.companyName;
-    if (brandNameFooter) {
-      brandNameFooter.textContent = SITE_CONFIG.brandName;
-    }
-    document.getElementById("year").textContent = new Date().getFullYear();
-
-    history.replaceState({}, "", window.location.pathname);
-
-
-    // ---------- PIXEL LEAD TRACKING ----------
-    let leadSent = false;
-
-    function trackLead(details = {}) {
-      if (leadSent) return;
-      leadSent = true;
-
-      const eventDetails = {
-        company: SITE_CONFIG.companyName,
-        brand: SITE_CONFIG.brandName,
-        phone: SITE_CONFIG.phone,
-        ...details
-      };
-
-      if (typeof fbq === "function") {
-        fbq('track', 'Lead', eventDetails);
-      }
-    }
-
-    // ---------- BUILD WHATSAPP LINKS ----------
-    function appUrl() {
-      return "whatsapp://send?phone=" + encodeURIComponent(SITE_CONFIG.phone) +
-        "&text=" + encodeURIComponent(SITE_CONFIG.message);
-    }
-
-    function waMeUrl() {
-      return "https://wa.me/" + encodeURIComponent(SITE_CONFIG.phone) +
-        "?text=" + encodeURIComponent(SITE_CONFIG.message);
-    }
-
-    // ---------- BUTTON ACTIONS ----------
-    const openAppBtn = document.getElementById("openAppBtn");
-
-    openAppBtn.onclick = () => {
-      trackLead({
-        content_name: "Continue with WhatsApp",
-        currency: "USD",
-        value: 0
-      });
-
-      const launchLink = document.createElement("a");
-      launchLink.href = appUrl();
-      launchLink.rel = "noopener";
-      launchLink.style.display = "none";
-      document.body.appendChild(launchLink);
-      launchLink.click();
-      launchLink.remove();
-    };
-
-
-    // ---------- 2 MINUTES COUNTDOWN (Get 50% off) ----------
-    /*
-    const offerTimerEl = document.getElementById("offerTimer");
-    let remaining = 120; // 2 minutes
-    
-    function formatTime(sec) {
-      const m = Math.floor(sec / 60);
-      const s = sec % 60;
-      return String(m).padStart(2, "0") + ":" + String(s).padStart(2, "0");
-    }
-    
-    if (offerTimerEl) {
-      offerTimerEl.textContent = formatTime(remaining);
-      const countdown = setInterval(() => {
-        remaining--;
-        if (remaining <= 0) {
-          clearInterval(countdown);
-          offerTimerEl.textContent = "00:00";
-          return;
-        }
-        offerTimerEl.textContent = formatTime(remaining);
-      }, 1000);
-    }
-    */
-
-
-    // ---------- RIGHT-SIDE ACTIVITY WIDGET (TOAST STYLE) ----------
-    const chatActivityEl = document.getElementById("chatActivity");
-
-    const names = [
-      "Aarav", "Riya", "Kabir", "Ishita", "Vihaan",
-      "Ananya", "Rahul", "Sneha", "Arjun", "Priya",
-      "Krish", "Meera", "Dev", "Pooja", "Sarthak"
-    ];
-
-    function randomActivity() {
-      if (!chatActivityEl) return;
-
-      const name = names[Math.floor(Math.random() * names.length)];
-      const minutes = Math.floor(Math.random() * 18) + 8; // 8–25 minutes
-      chatActivityEl.innerHTML = `
-    <div class="chat-activity-dot"></div>
-    <div class="chat-activity-text">
-      <div class="chat-activity-main">
-        <strong>${name}</strong> chatted with ${SITE_CONFIG.companyName}
-      </div>
-      <div class="chat-activity-sub">
-        ${minutes} minute${minutes > 1 ? "s" : ""} ago
-      </div>
-    </div>
-  `;
-    }
-
-    function showActivity() {
-      chatActivityEl.classList.add("is-visible");
-    }
-
-    function hideActivity() {
-      chatActivityEl.classList.remove("is-visible");
-    }
-
-    // slower, more natural live-chat behavior
-    function startActivityLoop() {
-      if (!chatActivityEl) return;
-
-      function cycle() {
-        randomActivity();
-        showActivity();
-
-        setTimeout(() => {
-          hideActivity();
-        }, 2200);
-      }
-
-      cycle();
-      setInterval(cycle, 8000);
-    }
-
-    startActivityLoop();
-
-    // ---------- LANGUAGE SELECTOR ----------
-    document.getElementById("langBtn").onclick = () => {
-      const menu = ["English", "हिन्दी", "Español", "中文", "العربية"];
-      const choice = prompt("Select language:\n" + menu.join("\n"), "English");
-      if (choice) document.getElementById("langBtn").textContent = choice + " ▾";
-    };
-  </script>
-
+</div>
 
 </body>
-
 </html>
